@@ -39,16 +39,53 @@ export const asyncRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/index',
+    redirect: '/playlist/list',
+  },
+  {
+    path: '/playlist',
+    component: Layout,
+    meta:{title:'歌单',icon:'table'},
     children: [
       {
-        path: 'index',
-        name: 'Index',
-        component: () => import('@/views/index/index'),
+        path: 'list',
+        // name: 'List',
+        component: () => import('@/views/playlist/list'),
         meta: {
-          title: '首页',
-          icon: 'home',
-          affix: true,
+          title: '歌单列表',
+          icon: 'table',
+          permissions: ['admin'],
+        },
+      },
+    ],
+  },
+  {
+    path: '/swiper',
+    component: Layout,
+    meta:{title:'轮播图',icon:'table'},
+    children: [
+      {
+        path: 'list',
+        component: () => import('@/views/swiper/list'),
+        meta: {
+          title: '轮播图',
+          icon: 'table',
+          permissions: ['admin'],
+        },
+      },
+    ],
+  },
+  {
+    path: '/blog',
+    component: Layout,
+    meta:{title:'博客',icon:'table'},
+    children: [
+      {
+        path: 'list',
+        component: () => import('@/views/blog/list'),
+        meta: {
+          title: '博客',
+          icon: 'table',
+          permissions: ['admin'],
         },
       },
     ],
